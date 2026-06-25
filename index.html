@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="en"><head>
+  
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Product Card UI using HTML &amp; CSS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+    
+    body {
+      background: #f1f5f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover { transform: translateY(-10px); }
+
+    .image-container {
+      width: 100%;
+      height: 250px;
+      background: #f8fafc;
+      padding: 20px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-container img {
+      width: 80%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 20px rgba(0,0,0,0.15));
+      transition: transform 0.5s ease;
+    }
+    
+    .card:hover .image-container img { transform: scale(1.1) rotate(-5deg); }
+
+    .badge {
+      position: absolute;
+      top: 15px; left: 15px;
+      background: #ef4444; color: white;
+      padding: 5px 12px; border-radius: 20px;
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+    }
+
+    .content { padding: 25px; }
+
+    .brand { color: #94a3b8; font-size: 0.9rem; font-weight: 500; text-transform: uppercase; margin-bottom: 5px; }
+    
+    .title { color: #1e293b; font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+
+    .price-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    
+    .price { color: #0f172a; font-size: 1.8rem; font-weight: 700; }
+    .old-price { color: #94a3b8; text-decoration: line-through; font-size: 1.1rem; }
+
+    .options { margin-bottom: 25px; }
+    .options-title { font-size: 0.9rem; color: #64748b; margin-bottom: 8px; font-weight: 500; }
+    
+    .colors { display: flex; gap: 10px; }
+    .color-btn {
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 3px solid white; box-shadow: 0 0 0 1px #cbd5e1;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .color-btn.active { box-shadow: 0 0 0 2px #0f172a; }
+    
+    .btn-cart {
+      width: 100%; padding: 15px;
+      background: #0f172a; color: white;
+      border: none; border-radius: 12px;
+      font-size: 1.1rem; font-weight: 600;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .btn-cart:hover { background: #334155; }
+  </style>
+
+            <meta name="description" content="A beautiful component imported via Developer Studio AI.">
+            <meta name="robots" content="index, follow">
+            <meta property="og:title" content="Responsive Product Card UI using HTML &amp; CSS">
+            <meta property="og:description" content="A beautiful component imported via Developer Studio AI.">
+            <meta property="og:image" content="https://codescompiler.com/images/posts/responsive-product-card-ui-using-html-css-2.png">
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:title" content="Responsive Product Card UI using HTML &amp; CSS">
+            <meta name="twitter:description" content="A beautiful component imported via Developer Studio AI.">
+            <meta name="twitter:image" content="https://codescompiler.com/images/posts/responsive-product-card-ui-using-html-css-2.png">
+          </head>
+<body>
+
+<!-- ── CODESCOMPILER DEMO HEADER ── -->
+<style>
+  #cc-demo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 48px;
+    background: #1a1b26;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: white;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999999;
+  }
+  #cc-demo-header a { text-decoration: none; color: white; }
+  .cc-logo { font-size: 14px; font-weight: 900; }
+  .cc-logo span { color: #04aa6d; }
+  .cc-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.12); margin: 0 12px; }
+  .cc-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.65); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cc-actions { display: flex; gap: 8px; }
+  .cc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: rgba(255,255,255,0.7);
+  }
+  .cc-btn:hover { background: rgba(255,255,255,0.15); color: white; }
+  .cc-btn svg { width: 14px; height: 14px; }
+  @media (max-width: 600px) {
+    .cc-title { display: none; }
+    .cc-btn span { display: none; }
+  }
+</style>
+<header id="cc-demo-header">
+  <div style="display: flex; align-items: center; overflow: hidden;">
+    <a href="https://codescompiler.com" class="cc-logo" target="_blank" rel="dofollow"><span>Codes</span>Compiler</a>
+    <div class="cc-sep"></div>
+    <h1 class="cc-title" title="Responsive Product Card UI using HTML & CSS" style="margin: 0; font-size: 13px; font-weight: 600;">📺 Responsive Product Card UI using HTML & CSS</h1>
+  </div>
+  <div class="cc-actions">
+    <a href="https://codescompiler.com/blog/responsive-product-card-ui-using-html-css-2" class="cc-btn" target="_blank" rel="dofollow" title="Read the full post">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+      <span>Back to Post</span>
+    </a>
+    <a href="index.html" class="cc-btn" target="_blank" download="responsive-product-card-ui-using-html-css-2.html" title="Download source file">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+      <span>Download</span>
+    </a>
+    <button onclick="document.getElementById('cc-demo-header').style.display='none'" class="cc-btn" title="Hide header for fullscreen view">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l5-5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+      <span>Fullscreen</span>
+    </button>
+  </div>
+</header>
+<!-- ================================== -->
+
+
+  <div class="card">
+    <div class="image-container">
+      <div class="badge">Sale</div>
+      <!-- Using a placeholder sneaker image -->
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=400&amp;q=80" style="border-radius:10px;" alt="Sneaker">
+    </div>
+    
+    <div class="content">
+      <div class="brand">Nike</div>
+      <h2 class="title">Air Max 270 React</h2>
+      
+      <div class="price-row">
+        <span class="price">$129.99</span>
+        <span class="old-price">$160.00</span>
+      </div>
+
+      <div class="options">
+        <div class="options-title">Select Color:</div>
+        <div class="colors">
+          <div class="color-btn active" style="background: #ef4444;"></div>
+          <div class="color-btn" style="background: #3b82f6;"></div>
+          <div class="color-btn" style="background: #10b981;"></div>
+          <div class="color-btn" style="background: #0f172a;"></div>
+        </div>
+      </div>
+
+      <button class="btn-cart">Add to Cart</button>
+    </div>
+  </div>
+
+
+</body></html>
